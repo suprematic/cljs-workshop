@@ -28,7 +28,9 @@
     (r.util/content-type "application/json")))
 
 (c.core/defroutes app-routes
-  (c.core/GET  "/wishes" [] (get-wishes))
+  (c.core/GET "/wishes" [] (get-wishes))
+  (c.core/GET "/" [] (r.util/redirect "/index.html"))
+  (c.route/files "/" {:root "www/"})
   (c.route/resources "/")
   (c.route/not-found (slurp "www/404.html")))
 
