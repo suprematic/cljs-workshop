@@ -23,7 +23,8 @@
     (.send request)))
 
 (defn c-wish [{:keys [motivation wish for]}]
-  [:div (str "I wish " for " to " wish " with " (name motivation) " motivation")]  )
+  [:div {:key (gensym)} 
+    (str "I wish " for " to " wish " with " (name motivation) " motivation")]  )
 
 (defn c-wishes []
   (map c-wish @wishes-model))
